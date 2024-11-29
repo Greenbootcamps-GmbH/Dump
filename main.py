@@ -1,6 +1,6 @@
 from idlelib.query import Query
 
-from fastapi import * # import the File FastAPI from the folder fastapi
+from api import * # import the File FastAPI from the folder fastapi
 from pydantic import BaseModel, Field, field_validator
 
 #import fastapi -> Import the entire folder
@@ -64,7 +64,7 @@ def get_person(place: int =  Query(..., description="The place of the person", t
     return person_list[place]
 
 
-@app.put("/people")
+@app.post("/people")
 def put_person(name: str, age: int, street: str, housenumber: int, city: str, country: str):
     person = (
         Person(
